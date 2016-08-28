@@ -7,7 +7,6 @@ class Solution(object):
         INT_MAX = 2147483647
         INT_MIN = -2147483648
         str = str.strip()
-        l = str.split()
         mul = 1
         result = 0
         error_sym = False
