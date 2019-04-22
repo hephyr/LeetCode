@@ -6,17 +6,16 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int result = 0;
-        map<char, int> m;
-        int start = 0;
-        for (int i = 0; i < s.size(); ++i) {
-            auto it = m.find(s[i]);
-            if (it != m.end() && it->second >= start) {
-                start = it->second + 1;
+        string unique;
+        for (auto c : s) {
+            auto pos = unique.find_first_of(c);
+            if (pos != unique.npos) {
+                unique.erase(0, pos+1);
             }
-            int temp = i - start + 1;
-            result = result < temp ? temp : result;
-            m[s[i]] = i;
-            if (s.size() - start + 1 <= result) break;
+            unique.push_back(c);
+            if (unique.size() > result) {
+                result = unique.size();
+            }
         }
         return result;
     }
