@@ -9,7 +9,6 @@ func fib(n int) int {
     a, b := 0, 1
     for n > 0 {
         a, b = b, a + b
-        b %= 1000000007
         n--
     }
     return a
